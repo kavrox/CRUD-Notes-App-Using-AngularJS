@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject, effect} from '@angular/core';
+import { NotesService } from '../notes-service';
 
 @Component({
   selector: 'app-note-editor',
@@ -6,4 +7,15 @@ import { Component } from '@angular/core';
   templateUrl: './note-editor.html',
   styleUrl: './note-editor.css',
 })
-export class NoteEditor {}
+export class NoteEditor {
+  dispForm = false;
+
+  noteService = inject(NotesService);
+  noteList = this.noteService.notesList;
+
+  createNoteEffect = effect(
+    () => {
+      this.noteService.createNewNote
+    } 
+  )
+}

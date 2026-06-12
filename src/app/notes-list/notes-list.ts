@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { NotesService } from '../notes-service';
+import { NotesListInterface } from '../notes-list-interface';
 
 @Component({
   selector: 'app-notes-list',
@@ -6,4 +8,7 @@ import { Component } from '@angular/core';
   templateUrl: './notes-list.html',
   styleUrl: './notes-list.css',
 })
-export class NotesList {}
+export class NotesList {
+  noteService = inject(NotesService);
+  noteList = this.noteService.notesList;
+}

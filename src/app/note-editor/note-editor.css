@@ -1,0 +1,29 @@
+.empty-state {
+    height: 100%;
+    min-height: 500px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+.icon {
+    font-size: 5rem;
+    opacity: 0.5;
+}
+
+.empty-state h2 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #111827;
+}
+
+.empty-state p {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    color: #6b7280;
+}
