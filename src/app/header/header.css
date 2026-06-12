@@ -1,0 +1,31 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    outline-style: groove;
+    outline-width: 1px;
+    outline-color: grey;
+}
+
+.left{
+    font-weight: lighter;
+}
+
+.middle{
+    input {
+        width: 600px;
+        padding: 12px;
+        border-radius: 6px;
+        margin-left: -100px;
+    }
+}
+
+.right{
+    select{
+        padding: 12px;
+        border-radius: 6px;
+    }
+}
