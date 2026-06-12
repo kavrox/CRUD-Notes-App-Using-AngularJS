@@ -1,6 +1,30 @@
 @if (dispForm) {
-    <main>
+    <main class="note-editor-form">
+        <div class="title">
+            <input type="text" placeholder="Enter a title">
+        </div>
 
+        <div class="text-area">
+            <textarea placeholder="Start writing your notes here..."></textarea>
+        </div>
+        
+        <div class="footer">
+            <div class="date">
+                Last updated: {{dt}}
+            </div>
+
+            <select class="type">
+                <option>General</option>
+                <option>Personal</option>
+                <option>Work</option>
+                <option>Ideas</option>
+            </select>
+            
+            <button class="cancel" (click)="cancelNote()">Cancel</button>
+            <button class="delete" (click)="deleteNote()">Delete</button>
+            <button class="save" (click)="saveNote()">Save</button>
+            
+        </div>
     </main>
 } @else {
     <div class="empty-state">

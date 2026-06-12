@@ -27,3 +27,167 @@
     font-size: 1.1rem;
     color: #6b7280;
 }
+
+.note-editor-form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    padding: 24px;
+    box-sizing: border-box;
+
+    background: #fff;
+}
+
+/* ---------- TITLE ---------- */
+
+.title input {
+    width: 100%;
+
+    padding: 14px 18px;
+
+    border: 1px solid #dcdfe4;
+    border-radius: 8px;
+
+    font-size: 20px;
+    color: #333;
+
+    outline: none;
+    box-sizing: border-box;
+}
+
+.title input:focus {
+    border-color: #6941f5;
+}
+
+/* ---------- TEXT AREA ---------- */
+
+.text-area textarea {
+    width: 100%;
+    height: 390px;
+
+    padding: 18px;
+
+    border: 1px solid #dcdfe4;
+    border-radius: 8px;
+
+    resize: none;
+    outline: none;
+
+    font-size: 16px;
+    line-height: 1.7;
+    font-family: inherit;
+
+    box-sizing: border-box;
+}
+
+.text-area textarea:focus {
+    border-color: #6941f5;
+}
+
+/* ---------- FOOTER ---------- */
+
+.footer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    flex-wrap: wrap;
+}
+
+.date {
+    margin-right: auto;
+
+    font-size: 14px;
+    color: #7d7d7d;
+}
+
+/* ---------- TYPE DROPDOWN ---------- */
+
+.type {
+    min-width: 130px;
+    height: 42px;
+
+    padding: 0 12px;
+
+    border: 1px solid #dcdfe4;
+    border-radius: 8px;
+
+    background: white;
+
+    font-size: 14px;
+    color: #333;
+
+    cursor: pointer;
+    outline: none;
+}
+
+.type:focus {
+    border-color: #6941f5;
+}
+
+/* ---------- BUTTONS ---------- */
+
+.footer button {
+    min-width: 100px;
+    height: 42px;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+    font-weight: 500;
+
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* Cancel */
+
+.cancel {
+    background: white;
+    color: #444;
+
+    border: 1px solid #dcdfe4;
+}
+
+.cancel:hover {
+    background: #f8f8f8;
+}
+
+/* Delete */
+
+.delete {
+    background: white;
+    color: #ef4444;
+
+    border: 1px solid #ef4444;
+}
+
+.delete:hover {
+    background: #fff5f5;
+}
+
+/* Save */
+
+.save {
+    border: none;
+    color: white;
+
+    background: linear-gradient(
+        90deg,
+        #6941f5 0%,
+        #5b36e8 50%,
+        #6941f5 100%
+    );
+}
+
+.save:hover {
+    filter: brightness(1.05);
+}
+
+.save:active,
+.cancel:active,
+.delete:active {
+    transform: translateY(1px);
+}
