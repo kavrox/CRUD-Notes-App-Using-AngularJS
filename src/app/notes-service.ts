@@ -1,39 +1,38 @@
 import { Injectable, signal } from '@angular/core';
 import { NotesListInterface } from './notes-list-interface';
 import { single } from 'rxjs';
+import { Title } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root',
 })
 export class NotesService {
   createNewNote = signal(Symbol());
+  catClicked = signal('General');
+  updateCount = signal(Symbol())
 
-  notesList: NotesListInterface[] = [{
-      noteId: '1',
+  OBJ = {
+      noteId: 'QWERTY',
       title: 'Angular Services',
       type: 'Work',
-      notes: 'Learn how services and dependency injection work in Angular.',
+      notes: '',
       createdAt: '2025-06-10T09:00:00Z',
       lastModified: '2025-06-10T11:30:00Z'
-    },
-    {
-      noteId: '2',
-      title: 'Grocery List',
-      type: 'Personal',
-      notes: 'Milk, Eggs, Bread, Coffee, Fruits',
-      createdAt: '2025-06-11T07:15:00Z',
-      lastModified: '2025-06-11T07:20:00Z'
-    }];
+  }
+  currentNote = signal<NotesListInterface>(this.OBJ);
+
+  notesList: NotesListInterface[] = [];
 
   addNote(title:string, type:string, notes:string){
     let new_note = {
-      noteId : this.notesList.length,
+      noteId : String(this.notesList.length),
       title : title,
       type : type,
       notes : notes,
       createdAt : new Date().toLocaleString(),
       lastModified : new Date().toLocaleString()
-    } 
+    }
+    this.notesList.push(new_note); 
   }
   delNote(note_item : NotesListInterface){
     let ind = this.notesList.indexOf(note_item);

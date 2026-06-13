@@ -1,19 +1,46 @@
 @if (dispForm) {
     <main class="note-editor-form">
         <div class="title">
-            <input type="text" placeholder="Enter a title">
+            <input type="text" #noteTitle placeholder="Enter a title">
         </div>
 
         <div class="text-area">
-            <textarea placeholder="Start writing your notes here..."></textarea>
+            <textarea #noteText placeholder="Start writing your notes here..."></textarea>
         </div>
         
         <div class="footer">
             <div class="date">
-                Last updated: {{dt}}
+                Note creation time to be updated here
             </div>
 
-            <select class="type">
+            <select class="type" #noteType>
+                <option>General</option>
+                <option>Personal</option>
+                <option>Work</option>
+                <option>Ideas</option>
+            </select>
+            
+            <button class="cancel" (click)="cancelNote()">Cancel</button>
+            <button class="save" (click)="addNote(noteTitle.value,noteText.value,noteType.value)">Add</button>
+            
+        </div>
+    </main>
+} @else if (dispNote) {
+    <main class="note-editor-form">
+        <div class="title">
+            <input type="text" #noteTitle placeholder="Enter a title" [value]="CurrentNoteDetails.title">
+        </div>
+
+        <div class="text-area">
+            <textarea #noteText placeholder="Start writing your notes here..." [value]="CurrentNoteDetails.notes"></textarea>
+        </div>
+        
+        <div class="footer">
+            <div class="date">
+                Last updated: {{CurrentNoteDetails.lastModified}}
+            </div>
+
+            <select class="type" #noteType [value]="CurrentNoteDetails.type">
                 <option>General</option>
                 <option>Personal</option>
                 <option>Work</option>
@@ -22,7 +49,7 @@
             
             <button class="cancel" (click)="cancelNote()">Cancel</button>
             <button class="delete" (click)="deleteNote()">Delete</button>
-            <button class="save" (click)="saveNote()">Save</button>
+            <button class="save" (click)="saveNote(CurrentNoteDetails, noteTitle.value, noteText.value, noteType.value)">Save</button>
             
         </div>
     </main>

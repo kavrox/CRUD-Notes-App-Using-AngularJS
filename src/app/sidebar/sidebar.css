@@ -68,7 +68,7 @@
     cursor: pointer;
 }
 
-.category-item.active {
+.category-item.active{
     background: #f3efff;
     color: #6941f5;
     font-weight: 600;

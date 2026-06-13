@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
 import { NotesService } from '../notes-service';
 import { NotesListInterface } from '../notes-list-interface';
 
@@ -11,4 +11,18 @@ import { NotesListInterface } from '../notes-list-interface';
 export class NotesList {
   noteService = inject(NotesService);
   noteList = this.noteService.notesList;
+  cat = 'General';
+  
+  constructor(){
+    effect(
+      () => {
+        this.cat = this.noteService.catClicked();
+      }
+    )
+  }
+
+  noteClicked(note:NotesListInterface) {
+    this.noteService.currentNote.set(note);
+  }
+  
 }

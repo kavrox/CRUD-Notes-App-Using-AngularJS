@@ -1,7 +1,9 @@
 .all-notes {
     font-size: 2rem;
     font-weight: 600;
-    margin-bottom: 1.5rem;  
+    margin-bottom: 1.5rem; 
+    margin-left: 10px; 
+    margin-top: 10px;
     color: #222;
 }
 
@@ -10,6 +12,8 @@
     flex-direction: column;
     gap: 1rem;
     max-width: 400px;
+    margin-left: 10px; 
+    margin-right: 10px;
 }
 
 .note-card {
@@ -26,10 +30,10 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
-.note-card:first-child {
+/*.note-card:first-child {
     background: #f5f3ff;
     border-color: #d6ccff;
-}
+}*/
 
 .title {
     font-size: 1.35rem;

@@ -8,25 +8,24 @@
 
     <div class="category-list">
 
-        <div class="category-item active">
+        <div class="category-item" (click)="catClicked('General')">
             <span>📋 All Notes</span>
-            <span class="count">5</span>
+            <span class="count">{{gC}}</span>
         </div>
 
-        <div class="category-item">
+        <div class="category-item" (click)="catClicked('Personal')">
             <span>👤 Personal</span>
-            <span class="count">2</span>
+            <span class="count">{{pC}}</span>
         </div>
 
-        <div class="category-item">
+        <div class="category-item" (click)="catClicked('Work')">
             <span>💼 Work</span>
-            <span class="count">2</span>
+            <span class="count">{{wC}}</span>
         </div>
 
-        <div class="category-item">
+        <div class="category-item" (click)="catClicked('Ideas')">
             <span>💡 Ideas</span>
-            <span class="count">1</span>
+            <span class="count">{{iC}}</span>
         </div>
-
     </div>
 </main>

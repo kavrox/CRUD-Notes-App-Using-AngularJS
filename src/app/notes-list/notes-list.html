@@ -1,20 +1,21 @@
-<p class="all-notes">All Notes</p>
+<p class="all-notes">{{cat}}</p>
 <main class="notes-list">
     @for (item of noteList; track $index) {
+        @if (cat === item.type) {
+            <div class="note-card" (click)="noteClicked(item)">
 
-        <div class="note-card">
+                <div class="title">
+                    {{item.title}}
+                </div>
 
-            <div class="title">
-                {{item.title}}
+                <div class="content">
+                    {{item.notes}}
+                </div>
+
+                <div class="date">
+                    {{item.lastModified}}
+                </div>
             </div>
-
-            <div class="content">
-                {{item.notes}}
-            </div>
-
-            <div class="date">
-                {{item.lastModified}}
-            </div>
-        </div>
+        } 
     }
 </main>
