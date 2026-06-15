@@ -9,7 +9,8 @@ import { Title } from '@angular/platform-browser';
 export class NotesService {
   createNewNote = signal(Symbol());
   catClicked = signal('General');
-  updateCount = signal(Symbol())
+  updateCount = signal(Symbol());
+  updateFilterList = signal(Symbol());
   sameCurrentNote = signal(Symbol());
 
   CurrentNoteDetails = {
@@ -24,6 +25,7 @@ export class NotesService {
   currentNote = signal<NotesListInterface>(this.CurrentNoteDetails);
 
   notesList = JSON.parse(localStorage.getItem("notesArray") || "[]");
+  filteredList = signal<NotesListInterface[]>(this.notesList);
 
   saveToLocal() {
     localStorage.setItem("notesArray",JSON.stringify(this.notesList))
@@ -40,6 +42,7 @@ export class NotesService {
     }
     this.notesList.push(new_note); 
     this.saveToLocal();
+    this.updateFilterList.set(Symbol());
     
   }
   delNote(note_item : NotesListInterface){
@@ -48,6 +51,7 @@ export class NotesService {
       this.notesList.splice(ind,1);
     }
     this.saveToLocal();
+    this.updateFilterList.set(Symbol())
   }
   editNote(note_item : NotesListInterface, title: string, notes: string, type:string){
     console.log(this.notesList)
@@ -64,5 +68,6 @@ export class NotesService {
     }
     console.log(this.notesList)
     this.saveToLocal();
+    this.updateFilterList.set(Symbol());
   }
 }

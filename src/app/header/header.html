@@ -3,7 +3,7 @@
         <h1>📁 Notes App</h1>
     </div>
     <div class="middle">
-        <input type="text" placeholder="Search notes..."/>
+        <input type="text" placeholder="Search notes..." #searchBar (input)="searchEvent(searchBar.value)" />
     </div>
     <div class="right">
         <select>

@@ -1,9 +1,9 @@
 <p class="all-notes">{{cat}}</p>
 <main class="notes-list">
-    @for (item of noteList; track $index) {
+    @for (item of this.noteService.filteredList(); track $index) {
         @if (cat === item.type) {
             <div class="note-card" (click)="noteClicked(item)">
-
+            
                 <div class="title">
                     {{item.title}}
                 </div>
