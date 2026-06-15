@@ -16,15 +16,7 @@ export class NoteEditor {
   dt = new Date().toLocaleString();
   noteService = inject(NotesService);
   noteList = this.noteService.notesList;
-
-  CurrentNoteDetails = {
-    noteId: '',
-    title: '',
-    type: '',
-    notes: '',
-    createdAt: '',
-    lastModified: ''
-  }
+  curObj = this.noteService.currentNote();
 
   createNoteEffect = effect(
     () => {
@@ -39,18 +31,20 @@ export class NoteEditor {
 
   currentNoteClickEffect = effect(
     () => {
-      let curObj = this.noteService.currentNote();
-      this.dispForm=false;
-      this.CurrentNoteDetails.title = curObj.title;
-      this.CurrentNoteDetails.type = curObj.type;
-      this.CurrentNoteDetails.notes = curObj.notes;
-      this.CurrentNoteDetails.createdAt = curObj.createdAt;
-      this.CurrentNoteDetails.lastModified = curObj.lastModified;
-      if (this.initialized==false){ 
-        this.initialized=true;
+      this.curObj = this.noteService.currentNote();
+      this.noteService.sameCurrentNote();
+      if (this.initialized === false) {
+        // first run
+        this.dispNote = false
+        this.dispForm = false
+        this.initialized = true;
       } else {
+        // not the first run
+        console.log('inside else block of current note click effect')
         this.dispNote=true;
+        this.dispForm=false;
       }
+      
     }
   )
 
@@ -78,7 +72,10 @@ export class NoteEditor {
   }
 
   saveNote(item: NotesListInterface, title:string, note:string, type:string){
+    console.log(item);
     this.noteService.editNote(item,title,note,type)
+    this.noteService.updateCount.set(Symbol());
+    this.dispNote=false;
     this.dispForm=false;
   }
 }

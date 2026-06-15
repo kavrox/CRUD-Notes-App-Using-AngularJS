@@ -10,16 +10,18 @@ export class NotesService {
   createNewNote = signal(Symbol());
   catClicked = signal('General');
   updateCount = signal(Symbol())
+  sameCurrentNote = signal(Symbol());
 
-  OBJ = {
-      noteId: 'QWERTY',
-      title: 'Angular Services',
-      type: 'Work',
-      notes: '',
-      createdAt: '2025-06-10T09:00:00Z',
-      lastModified: '2025-06-10T11:30:00Z'
+  CurrentNoteDetails = {
+    noteId: '',
+    title: '',
+    type: '',
+    notes: '',
+    createdAt: '',
+    lastModified: ''
   }
-  currentNote = signal<NotesListInterface>(this.OBJ);
+
+  currentNote = signal<NotesListInterface>(this.CurrentNoteDetails);
 
   notesList: NotesListInterface[] = [];
 
@@ -41,9 +43,18 @@ export class NotesService {
     }
   }
   editNote(note_item : NotesListInterface, title: string, notes: string, type:string){
-    note_item.title = title;
-    note_item.notes = notes;
-    note_item.type = type;
-    note_item.lastModified = new Date().toLocaleString();
+    console.log(this.notesList)
+    console.log("inside edit note")
+    for (let item of this.notesList){
+      if (item.title === note_item.title) {
+        console.log("item found")
+        item.title = title;
+        item.notes = notes;
+        item.type = type;
+        item.lastModified = new Date().toLocaleString();
+        break;
+      }
+    }
+    console.log(this.notesList)
   }
 }

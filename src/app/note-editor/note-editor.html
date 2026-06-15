@@ -28,19 +28,19 @@
 } @else if (dispNote) {
     <main class="note-editor-form">
         <div class="title">
-            <input type="text" #noteTitle placeholder="Enter a title" [value]="CurrentNoteDetails.title">
+            <input type="text" #noteTitle placeholder="Enter a title" [value]="curObj.title">
         </div>
 
         <div class="text-area">
-            <textarea #noteText placeholder="Start writing your notes here..." [value]="CurrentNoteDetails.notes"></textarea>
+            <textarea #noteText placeholder="Start writing your notes here..." [value]="curObj.notes"></textarea>
         </div>
         
         <div class="footer">
             <div class="date">
-                Last updated: {{CurrentNoteDetails.lastModified}}
+                Last updated: {{curObj.lastModified}}
             </div>
 
-            <select class="type" #noteType [value]="CurrentNoteDetails.type">
+            <select class="type" #noteType [value]="curObj.type">
                 <option>General</option>
                 <option>Personal</option>
                 <option>Work</option>
@@ -49,7 +49,7 @@
             
             <button class="cancel" (click)="cancelNote()">Cancel</button>
             <button class="delete" (click)="deleteNote()">Delete</button>
-            <button class="save" (click)="saveNote(CurrentNoteDetails, noteTitle.value, noteText.value, noteType.value)">Save</button>
+            <button class="save" (click)="saveNote(curObj, noteTitle.value, noteText.value, noteType.value)">Save</button>
             
         </div>
     </main>

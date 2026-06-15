@@ -22,6 +22,10 @@ export class NotesList {
   }
 
   noteClicked(note:NotesListInterface) {
+    console.log(note.title + 'was clicked');
+    if (note === this.noteService.currentNote()) {
+      this.noteService.sameCurrentNote.set(Symbol());
+    }
     this.noteService.currentNote.set(note);
   }
   
