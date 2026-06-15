@@ -23,7 +23,11 @@ export class NotesService {
 
   currentNote = signal<NotesListInterface>(this.CurrentNoteDetails);
 
-  notesList: NotesListInterface[] = [];
+  notesList = JSON.parse(localStorage.getItem("notesArray") || "[]");
+
+  saveToLocal() {
+    localStorage.setItem("notesArray",JSON.stringify(this.notesList))
+  }
 
   addNote(title:string, type:string, notes:string){
     let new_note = {
@@ -35,12 +39,15 @@ export class NotesService {
       lastModified : new Date().toLocaleString()
     }
     this.notesList.push(new_note); 
+    this.saveToLocal();
+    
   }
   delNote(note_item : NotesListInterface){
     let ind = this.notesList.indexOf(note_item);
     if (ind > -1) {
       this.notesList.splice(ind,1);
     }
+    this.saveToLocal();
   }
   editNote(note_item : NotesListInterface, title: string, notes: string, type:string){
     console.log(this.notesList)
@@ -56,5 +63,6 @@ export class NotesService {
       }
     }
     console.log(this.notesList)
+    this.saveToLocal();
   }
 }
