@@ -8,6 +8,7 @@ import { NotesService } from '../notes-service';
 })
 export class Sidebar {
   noteService = inject(NotesService);
+  selectedCategory = 'General';
   noteList = this.noteService.notesList;
   gC = 0;
   pC = 0;
@@ -45,6 +46,7 @@ export class Sidebar {
   }
 
   catClicked(type:string){
+    this.selectedCategory = type;
     this.noteService.catClicked.set(type)
     console.log(type+' was clicked')
   }

@@ -1,21 +1,46 @@
-<p class="all-notes">{{cat}}</p>
+<p class="all-notes">
+    {{ cat }}
+    <span class="notes-count">
+        {{ noteService.filteredList().length }}
+    </span>
+</p>
+
 <main class="notes-list">
+
     @for (item of this.noteService.filteredList(); track $index) {
+
         @if (cat === item.type) {
-            <div class="note-card" (click)="noteClicked(item)">
-            
-                <div class="title">
-                    {{item.title}}
+
+            <div
+                class="note-card"
+                [class.selected]="selectedNote() === item"
+                (click)="noteClicked(item)"
+            >
+
+                <div class="note-header">
+
+                    <div class="title">
+                        {{ item.title }}
+                    </div>
+
+                    <div class="pin">
+                        ☆
+                    </div>
+
                 </div>
 
                 <div class="content">
-                    {{item.notes}}
+                    {{ item.notes }}
                 </div>
 
                 <div class="date">
-                    {{item.lastModified}}
+                    📅 {{ item.lastModified }}
                 </div>
+
             </div>
-        } 
+
+        }
+
     }
+
 </main>

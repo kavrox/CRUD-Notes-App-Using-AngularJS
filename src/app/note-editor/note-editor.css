@@ -1,32 +1,5 @@
-.empty-state {
-    height: 100%;
-    min-height: 500px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    text-align: center;
-}
-
-.icon {
-    font-size: 5rem;
-    opacity: 0.5;
-}
-
-.empty-state h2 {
-    margin: 0;
-    font-size: 2rem;
-    font-weight: 700;
-    color: #111827;
-}
-
-.empty-state p {
-    margin-top: 1rem;
-    font-size: 1.1rem;
-    color: #6b7280;
-}
+/* ---------- ROOT ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 .note-editor-form {
     height: 100%;
@@ -37,7 +10,59 @@
     padding: 24px;
     box-sizing: border-box;
 
-    background: #fff;
+    font-family: 'Inter', sans-serif;
+
+    background: #fafbfc;
+
+    background: #ffffff;
+
+    border-left: 1px solid #eceef2;
+
+    box-shadow:
+        0 1px 2px rgba(0,0,0,0.03),
+        0 12px 40px rgba(0,0,0,0.04);
+}
+
+/* ---------- EMPTY STATE ---------- */
+
+.empty-state {
+    height: 100%;
+    min-height: 500px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    font-family: 'Inter', sans-serif;
+}
+
+.icon {
+    font-size: 5rem;
+    opacity: 0.75;
+
+    filter: grayscale(0.2);
+}
+
+.empty-state h2 {
+    margin: 0;
+
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+
+    color: #111827;
+}
+
+.empty-state p {
+    margin-top: 1rem;
+
+    font-size: 1rem;
+    font-weight: 500;
+
+    color: #6b7280;
 }
 
 /* ---------- TITLE ---------- */
@@ -47,18 +72,33 @@
 
     padding: 14px 18px;
 
-    border: 1px solid #dcdfe4;
-    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+
+    background: rgba(255, 255, 255, 0.9);
 
     font-size: 20px;
-    color: #333;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+
+    color: #111827;
 
     outline: none;
     box-sizing: border-box;
+
+    transition: all 0.2s ease;
+}
+
+.title input::placeholder {
+    color: #9ca3af;
 }
 
 .title input:focus {
-    border-color: #6941f5;
+    border-color: #7c3aed;
+
+    box-shadow:
+        0 0 0 4px rgba(124, 58, 237, 0.08),
+        0 8px 24px rgba(124, 58, 237, 0.08);
 }
 
 /* ---------- TEXT AREA ---------- */
@@ -69,21 +109,35 @@
 
     padding: 18px;
 
-    border: 1px solid #dcdfe4;
-    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+
+    background: rgba(255, 255, 255, 0.9);
 
     resize: none;
     outline: none;
 
-    font-size: 16px;
-    line-height: 1.7;
-    font-family: inherit;
+    font-size: 15px;
+    line-height: 1.8;
+    font-family: 'Inter', sans-serif;
+
+    color: #1f2937;
 
     box-sizing: border-box;
+
+    transition: all 0.2s ease;
+}
+
+.text-area textarea::placeholder {
+    color: #9ca3af;
 }
 
 .text-area textarea:focus {
-    border-color: #6941f5;
+    border-color: #7c3aed;
+
+    box-shadow:
+        0 0 0 4px rgba(124, 58, 237, 0.08),
+        0 8px 24px rgba(124, 58, 237, 0.08);
 }
 
 /* ---------- FOOTER ---------- */
@@ -99,11 +153,13 @@
 .date {
     margin-right: auto;
 
-    font-size: 14px;
-    color: #7d7d7d;
+    font-size: 13px;
+    font-weight: 500;
+
+    color: #9ca3af;
 }
 
-/* ---------- TYPE DROPDOWN ---------- */
+/* ---------- DROPDOWN ---------- */
 
 .type {
     min-width: 130px;
@@ -111,20 +167,26 @@
 
     padding: 0 12px;
 
-    border: 1px solid #dcdfe4;
-    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
 
     background: white;
 
     font-size: 14px;
-    color: #333;
+    font-weight: 500;
+
+    color: #374151;
 
     cursor: pointer;
     outline: none;
+
+    transition: all 0.2s ease;
 }
 
 .type:focus {
-    border-color: #6941f5;
+    border-color: #7c3aed;
+
+    box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.08);
 }
 
 /* ---------- BUTTONS ---------- */
@@ -133,12 +195,13 @@
     min-width: 100px;
     height: 42px;
 
-    border-radius: 8px;
+    border-radius: 12px;
 
-    font-size: 15px;
-    font-weight: 500;
+    font-size: 14px;
+    font-weight: 600;
 
     cursor: pointer;
+
     transition: all 0.2s ease;
 }
 
@@ -146,26 +209,30 @@
 
 .cancel {
     background: white;
-    color: #444;
 
-    border: 1px solid #dcdfe4;
+    color: #374151;
+
+    border: 1px solid #e5e7eb;
 }
 
 .cancel:hover {
-    background: #f8f8f8;
+    background: #f9fafb;
+
+    border-color: #d1d5db;
 }
 
 /* Delete */
 
 .delete {
     background: white;
+
     color: #ef4444;
 
-    border: 1px solid #ef4444;
+    border: 1px solid #fecaca;
 }
 
 .delete:hover {
-    background: #fff5f5;
+    background: #fef2f2;
 }
 
 /* Save */
@@ -175,15 +242,44 @@
     color: white;
 
     background: linear-gradient(
-        90deg,
-        #6941f5 0%,
-        #5b36e8 50%,
-        #6941f5 100%
+        135deg,
+        #8b5cf6 0%,
+        #7c3aed 50%,
+        #6d28d9 100%
     );
+
+    box-shadow:
+        0 8px 20px rgba(124, 58, 237, 0.25);
 }
 
 .save:hover {
-    filter: brightness(1.05);
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 12px 28px rgba(124, 58, 237, 0.35);
+}
+
+/* Component-scoped dark theme overrides */
+:host-context(.dark-theme) .note-editor-form {
+    background: #111827;
+    border-left: 1px solid #334155;
+    color: #f8fafc;
+}
+
+:host-context(.dark-theme) .title input,
+:host-context(.dark-theme) .text-area textarea,
+:host-context(.dark-theme) .type,
+:host-context(.dark-theme) .cancel,
+:host-context(.dark-theme) .delete,
+:host-context(.dark-theme) .save {
+    background: #0f172a;
+    border: 1px solid #334155;
+    color: #f8fafc;
+}
+
+:host-context(.dark-theme) .title input::placeholder,
+:host-context(.dark-theme) .text-area textarea::placeholder {
+    color: #94a3b8;
 }
 
 .save:active,

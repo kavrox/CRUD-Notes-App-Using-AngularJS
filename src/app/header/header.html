@@ -2,13 +2,20 @@
     <div class="left">
         <h1>📁 Notes App</h1>
     </div>
+
     <div class="middle">
-        <input type="text" placeholder="Search notes..." #searchBar (input)="searchEvent(searchBar.value)" />
+        <input
+            type="text"
+            placeholder="🔍 Search notes..."
+            #searchBar
+            (input)="searchEvent(searchBar.value)"
+        />
     </div>
+
     <div class="right">
-        <select>
-            <option>☀️ Light Mode</option>
-            <option>🌙 Dark Mode</option>
+        <select #themeSelector [value]="theme" (change)="toggleTheme(themeSelector.value)">
+            <option value="light">☀️ Light Mode</option>
+            <option value="dark">🌙 Dark Mode</option>
         </select>
     </div>
 </div>

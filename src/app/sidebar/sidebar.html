@@ -1,31 +1,66 @@
 <main class="sidebar">
+
     <button type="button" class="new-note-btn" (click)="newNote()">
         <span class="plus">+</span>
-        New Note
+        <span>New Note</span>
     </button>
 
     <h5 class="cat">CATEGORIES</h5>
 
     <div class="category-list">
 
-        <div class="category-item" (click)="catClicked('General')">
-            <span>📋 All Notes</span>
+        <div
+            class="category-item"
+            [class.active]="selectedCategory === 'General'"
+            (click)="catClicked('General')"
+        >
+            <span class="category-label">
+                <span class="icon">📋</span>
+                All Notes
+            </span>
+
             <span class="count">{{gC}}</span>
         </div>
 
-        <div class="category-item" (click)="catClicked('Personal')">
-            <span>👤 Personal</span>
+        <div
+            class="category-item"
+            [class.active]="selectedCategory === 'Personal'"
+            (click)="catClicked('Personal')"
+        >
+            <span class="category-label">
+                <span class="icon">👤</span>
+                Personal
+            </span>
+
             <span class="count">{{pC}}</span>
         </div>
 
-        <div class="category-item" (click)="catClicked('Work')">
-            <span>💼 Work</span>
+        <div
+            class="category-item"
+            [class.active]="selectedCategory === 'Work'"
+            (click)="catClicked('Work')"
+        >
+            <span class="category-label">
+                <span class="icon">💼</span>
+                Work
+            </span>
+
             <span class="count">{{wC}}</span>
         </div>
 
-        <div class="category-item" (click)="catClicked('Ideas')">
-            <span>💡 Ideas</span>
+        <div
+            class="category-item"
+            [class.active]="selectedCategory === 'Ideas'"
+            (click)="catClicked('Ideas')"
+        >
+            <span class="category-label">
+                <span class="icon">💡</span>
+                Ideas
+            </span>
+
             <span class="count">{{iC}}</span>
         </div>
+
     </div>
+
 </main>

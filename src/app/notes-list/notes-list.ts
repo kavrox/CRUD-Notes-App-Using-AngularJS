@@ -10,6 +10,7 @@ import { NotesListInterface } from '../notes-list-interface';
 })
 export class NotesList {
   noteService = inject(NotesService);
+  selectedNote = signal<NotesListInterface | null>(null);
   cat = 'General';
   
   catClick =
@@ -18,8 +19,9 @@ export class NotesList {
         this.cat = this.noteService.catClicked();
       }
     )
-
+  
   noteClicked(note:NotesListInterface) {
+    this.selectedNote.set(note);
     console.log(note.title + 'was clicked');
     if (note === this.noteService.currentNote()) {
       this.noteService.sameCurrentNote.set(Symbol());
